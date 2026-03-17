@@ -1,21 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>i2i - Idea to Implementation</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+<title>i2i - Idea to Implementation</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
 
 <body>
 
-<h1>i2i - Idea to Implementation</h1>
+<header class="header">
 
-<p>Enter your startup idea:</p>
+<img src="https://raw.githubusercontent.com/Nagendrababu04/i2i_project/main/static/images/logo.png"
+class="logo">
 
-<textarea id="ideaInput" rows="5" cols="50"></textarea>
+<h1>i2i – Idea to Implementation</h1>
 
-<br><br>
+<p class="tagline">
+Transform Ideas Into Real Solutions
+</p>
 
-<button type="button" id="analyzeBtn">Analyze Idea</button>
+</header>
+
+
+<div class="card">
+
+<h2>Enter your startup idea</h2>
+
+<textarea id="ideaInput" rows="5"></textarea>
+
+<br>
+
+<button id="analyzeBtn">Analyze Idea</button>
+
+</div>
+
+<div id="loading" class="loading" style="display:none;">
+    <p>Analyzing your idea...</p>
+    <div class="spinner"></div>
+</div>
+
+<div id="result" class="card" style="display:none;">
+
+<h2>AI Analysis</h2>
+
+<p><strong>Idea Summary:</strong></p>
+<div id="summary"></div>
+
+<p><strong>Recommended Tech Stack:</strong></p>
+<div id="techStack"></div>
+
+<p><strong>Implementation Steps:</strong></p>
+<div id="steps"></div>
+
+<p><strong>Challenges:</strong></p>
+<div id="challenges"></div>
+
+</div>
+
+
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 </body>
 </html>

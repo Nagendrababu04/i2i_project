@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0b0f1a;
+    color: #e6f1ff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    margin-top: 30px;
+}
+
+.logo {
+    width: 120px;
+}
+
+.tagline {
+    color: #00c6ff;
+}
+
+.card {
+    background: #1a2130;
+    width: 60%;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0,198,255,0.2);
+}
+
+textarea {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background: #00c6ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #009ecf;
+}
+
+.loading {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.spinner {
+    margin: 10px auto;
+    width: 40px;
+    height: 40px;
+    border: 5px solid #1a2130;
+    border-top: 5px solid #00c6ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

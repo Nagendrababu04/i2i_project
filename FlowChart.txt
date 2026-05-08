@@ -1,0 +1,23 @@
+START
+ ↓
+Index Page
+ ↓
+Register / Login
+ ↓
+Dashboard
+ ↓
+User enters idea
+ ↓
+AI Processing (Gemini)
+ ↓
+Structured Output Generated
+ ↓
+Save to Database
+ ↓
+ ├── Add to Favorites
+ ├── View History
+ ├── Delete Idea
+ ↓
+View Full Idea Details
+ ↓
+END

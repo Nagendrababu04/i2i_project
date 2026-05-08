@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Email Already Exists</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/email.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h1>⚠️ Account Already Exists</h1>
+
+        <p>
+            An account with this email already exists.<br>
+            Please login to continue.
+        </p>
+
+        <div class="actions">
+            <button onclick="window.location.href='/login'">🔐 Login</button>
+            <button onclick="window.location.href='/register'">🔁 Use Different Email</button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

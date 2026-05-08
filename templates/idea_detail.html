@@ -1,0 +1,21 @@
+<h2>Full AI Analysis</h2>
+
+<p><strong>Summary:</strong> {{ data.summary }}</p>
+<p><strong>Domain:</strong> {{ data.domain }}</p>
+<p><strong>Improved Idea:</strong> {{ data.improvedIdea }}</p>
+<p><strong>Score:</strong> {{ data.uniquenessScore }}</p>
+
+<h3>Similar Ideas</h3>
+<p>{{ data.similarIdeas | safe }}</p>
+
+<h3>Features</h3>
+<p>{{ data.uniqueFeatures | safe }}</p>
+
+<h3>Tech Stack</h3>
+<p>{{ data.techStack | safe }}</p>
+
+<h3>Steps</h3>
+<p>{{ data.steps | safe }}</p>
+
+<h3>Challenges</h3>
+<p>{{ data.challenges | safe }}</p>

@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>i2i - Idea to Implementation</title>
 
-<title>i2i - Idea to Implementation</title>
-
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
-
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
-
-<header class="header">
 
 <img src="https://raw.githubusercontent.com/Nagendrababu04/i2i_project/main/static/images/logo.png"
 class="logo">
@@ -22,46 +18,41 @@ class="logo">
 Transform Ideas Into Real Solutions
 </p>
 
-</header>
-
-
+<!-- WHAT IS i2i -->
 <div class="card">
-
-<h2>Enter your startup idea</h2>
-
-<textarea id="ideaInput" rows="5"></textarea>
-
-<br>
-
-<button id="analyzeBtn">Analyze Idea</button>
-
+    <h2>What is i2i?</h2>
+    <p>
+        i2i helps transform raw ideas into structured implementation plans using AI.
+        Get insights on feasibility, features, tech stack, and execution steps instantly.
+    </p>
 </div>
 
-<div id="loading" class="loading" style="display:none;">
-    <p>Analyzing your idea...</p>
-    <div class="spinner"></div>
+<!-- FEATURES -->
+<div class="card">
+    <h2>Why to use i2i?</h2>
+    <ul>
+        <li>AI-powered analysis</li>
+        <li>Structured outputs</li>
+        <li>Save & manage ideas</li>
+        <li>Favorites system</li>
+    </ul>
 </div>
 
-<div id="result" class="card" style="display:none;">
+<!-- CTA -->
+<button class="get-started" onclick="window.location.href='/register'">
+    🚀 Get Started
+</button>
 
-<h2>AI Analysis</h2>
+<p>Already have an account?</p>
 
-<p><strong>Idea Summary:</strong></p>
-<div id="summary"></div>
+<button onclick="window.location.href='/login'">
+    Login
+</button>
 
-<p><strong>Recommended Tech Stack:</strong></p>
-<div id="techStack"></div>
-
-<p><strong>Implementation Steps:</strong></p>
-<div id="steps"></div>
-
-<p><strong>Challenges:</strong></p>
-<div id="challenges"></div>
-
+<!-- FOOTER -->
+<div class="footer">
+    <p>© 2026 i2i. All rights reserved.</p>
 </div>
-
-
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 </html>

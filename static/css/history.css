@@ -1,0 +1,27 @@
+body {
+    background: #020617;
+    color: white;
+    font-family: Arial;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.idea-card {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    border-left: 4px solid #4F46E5;
+}
+
+.idea-card.favorite {
+    border-left: 4px solid #22C55E;
+}

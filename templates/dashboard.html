@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="left">
+            <img src="https://raw.githubusercontent.com/Nagendrababu04/i2i_project/main/static/images/logo.png" class="logo">
+            <h1>i2i</h1>
+        </div>
+
+        <div class="right">
+            <span>👤 {{ session['username'] }}</span>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </header>
+
+    <h2 class="title">✨ Transform Your Ideas Into Real Solutions</h2>
+
+    <div class="card">
+        <h3>Enter your idea — AI will analyze and provide insights</h3>
+
+        <div class="input-glow">
+            <textarea id="ideaInput" rows="8" placeholder="Type your idea here..."></textarea>
+        </div>
+
+        <button id="analyzeBtn" onclick="analyzeIdea()">Analyze Idea 🚀</button>
+    </div>
+
+    <div id="loading" class="loading" style="display:none;">
+        <p>Analyzing your idea...</p>
+        <div class="spinner"></div>
+    </div>
+
+<div id="result" class="card" style="display:none;">
+        <h2>🧠 AI Analysis</h2>
+
+        <div class="results-grid">
+            <div class="result-item full-width">
+                <h4>Idea Summary</h4>
+                <div id="summary"></div>
+            </div>
+
+            <div class="result-item">
+                <h4>Domain</h4>
+                <div id="domain"></div>
+            </div>
+
+            <div class="result-item">
+                <h4>Uniqueness Score</h4>
+                <div id="uniquenessScore"></div>
+            </div>
+
+            <div class="result-item full-width">
+                <h4>Improved Idea</h4>
+                <div id="improvedIdea"></div>
+            </div>
+
+            <div class="result-item">
+                <h4>Similar Ideas</h4>
+                <div id="similarIdeas"></div>
+            </div>
+
+            <div class="result-item">
+                <h4>Unique Features</h4>
+                <div id="uniqueFeatures"></div>
+            </div>
+
+            <div class="result-item full-width">
+                <h4>Recommended Tech Stack</h4>
+                <div id="techStack"></div>
+            </div>
+
+            <div class="result-item full-width">
+                <h4>Implementation Steps</h4>
+                <div id="steps"></div>
+            </div>
+
+            <div class="result-item full-width">
+                <h4>Challenges</h4>
+                <div id="challenges"></div>
+            </div>
+        </div>
+
+        <button id="favoriteBtn">⭐ Add to Favorites</button>
+    </div>
+
+
+    <div class="card">
+        <h3>Manage your ideas</h3>
+        <button class="history-btn" onclick="goToHistory()">📁 View All Ideas</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 i2i - Idea to Implementation. All rights reserved.</p>
+    </footer>
+
+</div>
+
+<script>
+let currentIdeaId = null;
+
+function goToHistory() {
+    window.location.href = "/history";
+}
+
+async function analyzeIdea() {
+    const idea = document.getElementById("ideaInput").value;
+
+    if (!idea.trim()) {
+        alert("Please enter an idea to analyze.");
+        return;
+    }
+
+    const loading = document.getElementById("loading");
+    const result = document.getElementById("result");
+
+    loading.style.display = "block";
+    result.style.display = "none";
+
+    const response = await fetch("/analyze", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ idea })
+    });
+
+    const data = await response.json();
+
+    
+    currentIdeaId = data.idea_id;
+
+    loading.style.display = "none";
+    result.style.display = "block";
+
+    document.getElementById("summary").innerHTML = data.summary || "";
+    document.getElementById("domain").innerHTML = data.domain || "";
+    document.getElementById("improvedIdea").innerHTML = data.improvedIdea || "";
+    document.getElementById("uniquenessScore").innerHTML = data.uniquenessScore || "";
+    document.getElementById("similarIdeas").innerHTML = data.similarIdeas || "";
+    document.getElementById("uniqueFeatures").innerHTML = data.uniqueFeatures || "";
+    document.getElementById("techStack").innerHTML = data.techStack || "";
+    document.getElementById("steps").innerHTML = data.steps || "";
+    document.getElementById("challenges").innerHTML = data.challenges || "";
+
+    document.getElementById("favoriteBtn").innerText = "⭐ Add to Favorites";
+}
+
+document.getElementById("favoriteBtn").addEventListener("click", async () => {
+
+    if (!currentIdeaId) {
+        alert("No idea to favorite");
+        return;
+    }
+
+    const response = await fetch("/favorite", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ idea_id: currentIdeaId })
+    });
+
+    const data = await response.json();
+
+    const btn = document.getElementById("favoriteBtn");
+
+    if (data.status === "added") {
+        btn.innerText = "⭐ Added to Favorites";
+    } else {
+        btn.innerText = "⭐ Add to Favorites";
+    }
+});
+
+</script>
+
+</body>
+</html>
